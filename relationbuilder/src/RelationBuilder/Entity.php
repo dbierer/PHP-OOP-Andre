@@ -5,7 +5,7 @@
 namespace RelationBuilder;
 
 class Entity {
-  public string displayName;
+  public string $displayName;
   
   public function __construct($displayName) {
     $this->displayName = $displayName;
