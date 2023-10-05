@@ -1,0 +1,20 @@
+{
+    "name": "Sandbox",
+    "description": "A sandbox to play in",
+    "keywords": [
+    	"sandbox"
+    ],
+    "homepage": "http://sandbox/",
+    "require": {
+        "php": ">=7.2",
+        "guzzlehttp/guzzle": "~6.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "php2\\": "src/"
+        }
+    }
+}
