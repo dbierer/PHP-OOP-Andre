@@ -18,5 +18,11 @@ class Person extends Entity {
   public function getFullName() :string {
     return trim(($this->firstName . ' ' ?? '') . ($this->lastName ?? ''));
   }
+  
+  public function getShortVersion() {
+   return new class($this->firstName, $this->lastName, $this->displayName) {
+     public function __construct(public string $firstName, public string $lastName, public string $displayName) {}
+   };
+  }
 }
 
