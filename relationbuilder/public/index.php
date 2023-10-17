@@ -10,23 +10,29 @@ spl_autoload_register(
 
 use RelationBuilder\Entity\Person;
 use RelationBuilder\Entity\Group\Organization;
+use RelationBuilder\Entity\Group\Team;
 
 $group1 = new Organization("Rydian Paving LLC");
+$team1 = new Team("Marketing", $group1);
 $person1 = new Person("Steven","Magnus",null);
 
 echo var_export($group1) . '<br>';
+echo var_export($team1) . '<br>';
 echo var_export($person1) . '<br>';
 
 echo '<br>';
 
-echo "Adding $person1 to $group1 ..." . '<br>';
-$group1->addMember($person1);
+echo "Adding $person1 to Team $team1 of Organization $group1 ..." . '<br>';
+$team1->addMember($person1);
+echo var_export($team1) . '<br>';
 echo var_export($group1) . '<br>';
 
 echo '<br>';
 
 echo "Removing $person1 from $group1 ..." . '<br>';
+$team1->removeMember($person1);
 $group1->removeMember($person1);
+echo var_export($team1) . '<br>';
 echo var_export($group1) . '<br>';
 
 echo '<br>';
