@@ -8,6 +8,7 @@ spl_autoload_register(
   }
 );
 
+use RelationBuilder\RBException;
 use RelationBuilder\Entity\Person;
 use RelationBuilder\Entity\Group\Organization;
 use RelationBuilder\Entity\Group\Team;
@@ -46,5 +47,19 @@ echo '<br>';
 
 echo 'Short version:' . '<br>';
 echo var_export($person1->getShortVersion());
+
+echo '<br><br>';
+
+echo 'Attempting to throw an Exception ... <br>';
+try {
+  throw new RBException('Something happened.', 139);
+  throw new InvalidArgumentException('Invalid argument passed!', 1184);
+} catch (RBException $e) {
+  echo $e->getOutputHTML();
+} catch (Exception $e) {
+  echo "[{$e->getCode()}]: {$e->getMessage()} \n<br>";
+} finally {
+  echo 'Made an attempt! <br>';
+}
 ?>
 
