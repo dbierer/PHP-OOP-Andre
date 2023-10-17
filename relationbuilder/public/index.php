@@ -9,9 +9,9 @@ spl_autoload_register(
 );
 
 use RelationBuilder\Entity\Person;
-use RelationBuilder\Entity\Group;
+use RelationBuilder\Entity\Group\Organization;
 
-$group1 = new Group("Rydian Paving LLC");
+$group1 = new Organization("Rydian Paving LLC");
 $person1 = new Person("Steven","Magnus",null);
 
 echo var_export($group1) . '<br>';
