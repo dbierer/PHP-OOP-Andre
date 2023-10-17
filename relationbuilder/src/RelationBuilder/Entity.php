@@ -8,17 +8,17 @@ abstract class Entity {
   public string $displayName;
   public $customProperties = [];
   
-  public function __construct($displayName) {
+  public function __construct(string $displayName) {
     $this->displayName = $displayName;
   }
   
-  public function __get($property) {
+  public function __get(mixed $property) {
     if (array_key_exists($property, $this->customProperties)) {
       return $this->customProperties[$property];
     }
   }
   
-  public function __isset($property) {
+  public function __isset(mixed $property) {
     return array_key_exists($property, $this->customProperties) && isset($this->customProperties[$property]);
   }
   
@@ -27,5 +27,7 @@ abstract class Entity {
   }
   
   abstract public function getShortVersion();
+
+  use Entity\EntityDebugTrait;
 }
 

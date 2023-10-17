@@ -4,12 +4,19 @@
  */
 namespace RelationBuilder\Entity;
 use RelationBuilder\Entity;
+use RelationBuilder\Entity\GroupInterface;
 use RelationBuilder\Entity\Person;
 
-class Group extends Entity {
+class Group extends Entity implements GroupInterface {
   public $members = [];
+
+  //use Group\GroupDebugTrait;
+  use Group\GroupDebugTrait, EntityDebugTrait {
+    Group\GroupDebugTrait::debug_print insteadof EntityDebugTrait;
+    EntityDebugTrait::debug_print as private debug_entityPrint;
+  }
   
-  public function addMember(Person $member) :bool {
+  public function addMember(Entity $member) :bool {
     if (!in_array($member, $this->members, true)) {
       $this->members[] = $member;
       return true;
@@ -17,7 +24,7 @@ class Group extends Entity {
     return false;
   }
   
-  public function removeMember(Person $member) :bool {
+  public function removeMember(Entity $member) :bool {
     $match = array_search($member, $this->members, true);
     if ($match !== NULL) {
       unset($this->members[$match]);
