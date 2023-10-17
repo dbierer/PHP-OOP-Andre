@@ -9,7 +9,7 @@ class Person extends Entity {
   public string $firstName;
   public string $lastName;
   
-  public function __construct($firstName, $lastName, $displayName) {
+  public function __construct(string $firstName, string $lastName, ?string $displayName) {
     $this->firstName = $firstName;
     $this->lastName = $lastName;
     $this->displayName = $displayName ?? ($firstName . ' ' . ($lastName ?? ''));
