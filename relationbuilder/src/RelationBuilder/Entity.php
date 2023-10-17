@@ -27,5 +27,7 @@ abstract class Entity {
   }
   
   abstract public function getShortVersion();
+
+  use Entity\EntityDebugTrait;
 }
 

@@ -17,16 +17,16 @@ $group1 = new Organization("Rydian Paving LLC");
 $team1 = new Team("Marketing", $group1);
 $person1 = new Person("Steven","Magnus",null);
 
-echo var_export($group1) . '<br>';
-echo var_export($team1) . '<br>';
-echo var_export($person1) . '<br>';
+$group1->debug_print();
+$team1->debug_print();
+$person1->debug_export();
 
 echo '<br>';
 
 echo "Adding $person1 to Team $team1 of Organization $group1 ..." . '<br>';
 $team1->addMember($person1);
-echo var_export($team1) . '<br>';
-echo var_export($group1) . '<br>';
+$team1->debug_printMembers();
+$group1->debug_printMembers();
 
 echo '<br>';
 

@@ -9,6 +9,12 @@ use RelationBuilder\Entity\Person;
 
 class Group extends Entity implements GroupInterface {
   public $members = [];
+
+  //use Group\GroupDebugTrait;
+  use Group\GroupDebugTrait, EntityDebugTrait {
+    Group\GroupDebugTrait::debug_print insteadof EntityDebugTrait;
+    EntityDebugTrait::debug_print as private debug_entityPrint;
+  }
   
   public function addMember(Entity $member) :bool {
     if (!in_array($member, $this->members, true)) {
